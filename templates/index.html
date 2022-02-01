@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+  <div class="login">
+    <h1>Make Single Prediction:</h1>
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+      <table>
+        <tr>
+          <td> <input type="text" name="t" placeholder="Enter T Value" required="required" /></td>
+          <td><input type="text" name="s" placeholder="Enter S Value" required="required" /></td>
+          <td> <button type="submit" class="btn btn-primary"><b>Predict</b></button></td>
+        </tr>
+        <tr>
+          <td>{{ input_value }}</td>
+        </tr>
+        <tr>
+          <td>Predicted Top: {{ prediction_value }} </td>
+        </tr>
+      </table>
+    </form>
+    <br><br><br><br>
+    <hr>
+  </div>
+  <div class="login">
+    <h1>Make Multiple Predictions:</h1>
+    <p>
+      Enter T and S in JSON format
+      <br>
+      <b>Sample Input:</b> {"s": [100, 200, 300], "t":[1, 2, 3]}
+    </p>
+
+    <h3><mark>{{ message }}</mark></h3>
+    <form action="{{ url_for('predict_json')}}" method="post">
+      <table>
+        <tr>
+          <td>
+            <textarea id="input_data" name="input_data" rows="4" cols="50" required></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button type="submit" class="btn btn-primary"><b>Predict Multiple</b></button>
+          </td>
+        </tr>
+        <tr>
+          <td>{{ input_values }}</td>
+        </tr>
+        <tr>
+          <td>Predicted Tops: {{ predicted_values }} </td>
+        </tr>
+      </table>
+
+    </form>
+    <br>
+  </div>
+
+
+</body>
+
+</html>
