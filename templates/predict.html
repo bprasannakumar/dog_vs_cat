@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+  <div class="login">
+    <br>
+    <h1>Make Prediction:</h1>
+    <br>
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
+      <table>
+        <tr>
+          <td><input type="file" name="image_1" required></td>
+        </tr>
+        <tr>
+          <td> <button type="submit" class="btn btn-primary"><b>Predict</b></button></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td>{{ error_message }} </td>
+        </tr>
+        <tr>
+          <td>Predicted Category: {{ prediction_value }} </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</body>
+
+</html>
